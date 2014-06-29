@@ -3,5 +3,5 @@
 libGDXを勉強しながら作ったゲームです。
 
 下記に解説があります。
-- http://mikio.github.io/article/2014/06/22_libgdx-beginner4.html
+- http://mikio.github.io/article/2014/06/29_libgdx-beginner4.html
 
