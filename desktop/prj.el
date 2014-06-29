@@ -1,0 +1,42 @@
+
+(jde-project-file-version
+ "1.0")
+(jde-set-variables
+ '(jde-compile-option-directory
+  "/home/mikio/dev/fishcatch/desktop/build/classes/main")
+ '(jde-junit-working-directory
+  "/home/mikio/dev/fishcatch/desktop")
+ '(jde-compile-option-source
+  '(
+   "default"))
+ '(jde-compile-option-target
+  '(
+   "default"))
+ '(jde-compile-option-command-line-args
+  '(
+   "-1.6"))
+ '(jde-sourcepath
+  '(
+   "/home/mikio/dev/fishcatch/desktop/src/main/resources"
+   "/home/mikio/dev/fishcatch/desktop/src"))
+ '(jde-global-classpath
+  '(
+   "/home/mikio/dev/fishcatch/desktop/build/classes/main"
+   "/home/mikio/dev/fishcatch/desktop/src/main/resources"
+   "/home/mikio/dev/fishcatch/desktop/src"
+   "/home/mikio/dev/fishcatch/core/build/libs/core-1.0.jar"
+   "/home/mikio/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-backend-lwjgl/1.0-SNAPSHOT/bd35283151e6a361f3fc765df6d17a3e1093da03/gdx-backend-lwjgl-1.0-SNAPSHOT.jar"
+   "/home/mikio/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-platform/1.0-SNAPSHOT/25862e86870663953fa13ed34d24a9bf47929a1d/gdx-platform-1.0-SNAPSHOT-natives-desktop.jar"
+   "/home/mikio/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx/1.0-SNAPSHOT/e544ea790a29a33485f683895bfa6507d805e91d/gdx-1.0-SNAPSHOT.jar"
+   "/home/mikio/.gradle/caches/modules-2/files-2.1/org.lwjgl.lwjgl/lwjgl/2.9.1/f58c5aabcef0e41718a564be9f8e412fff8db847/lwjgl-2.9.1.jar"
+   "/home/mikio/.gradle/caches/modules-2/files-2.1/org.lwjgl.lwjgl/lwjgl_util/2.9.1/290d7ba8a1bd9566f5ddf16ad06f09af5ec9b20e/lwjgl_util-2.9.1.jar"
+   "/home/mikio/.gradle/caches/modules-2/files-2.1/com.badlogicgames.jlayer/jlayer/1.0.1-gdx/7cca83cec5c1b2f011362f4d85aabd71a73b049d/jlayer-1.0.1-gdx.jar"
+   "/home/mikio/.gradle/caches/modules-2/files-2.1/org.jcraft/jorbis/0.0.17/8872d22b293e8f5d7d56ff92be966e6dc28ebdc6/jorbis-0.0.17.jar"
+   "/home/mikio/.gradle/caches/modules-2/files-2.1/org.lwjgl.lwjgl/lwjgl-platform/2.9.1/4c517eca808522457dd95ee8fc1fbcdbb602efbe/lwjgl-platform-2.9.1-natives-windows.jar"
+   "/home/mikio/.gradle/caches/modules-2/files-2.1/org.lwjgl.lwjgl/lwjgl-platform/2.9.1/aa9aae879af8eb378e22cfc64db56ec2ca9a44d1/lwjgl-platform-2.9.1-natives-linux.jar"
+   "/home/mikio/.gradle/caches/modules-2/files-2.1/org.lwjgl.lwjgl/lwjgl-platform/2.9.1/2d12c83fdfbc04ecabf02c7bc8cc54d034f0daac/lwjgl-platform-2.9.1-natives-osx.jar"
+   "/home/mikio/.gradle/caches/modules-2/files-2.1/net.java.jinput/jinput/2.0.5/39c7796b469a600f72380316f6b1f11db6c2c7c4/jinput-2.0.5.jar"
+   "/home/mikio/.gradle/caches/modules-2/files-2.1/net.java.jutils/jutils/1.0.0/e12fe1fda814bd348c1579329c86943d2cd3c6a6/jutils-1.0.0.jar"
+   "/home/mikio/.gradle/caches/modules-2/files-2.1/net.java.jinput/jinput-platform/2.0.5/7ff832a6eb9ab6a767f1ade2b548092d0fa64795/jinput-platform-2.0.5-natives-linux.jar"
+   "/home/mikio/.gradle/caches/modules-2/files-2.1/net.java.jinput/jinput-platform/2.0.5/385ee093e01f587f30ee1c8a2ee7d408fd732e16/jinput-platform-2.0.5-natives-windows.jar"
+   "/home/mikio/.gradle/caches/modules-2/files-2.1/net.java.jinput/jinput-platform/2.0.5/53f9c919f34d2ca9de8c51fc4e1e8282029a9232/jinput-platform-2.0.5-natives-osx.jar")))

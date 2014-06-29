@@ -1,0 +1,32 @@
+
+(jde-project-file-version
+ "1.0")
+(jde-set-variables
+ '(jde-compile-option-directory
+  "/home/mikio/dev/fishcatch/ios/build/classes/main")
+ '(jde-junit-working-directory
+  "/home/mikio/dev/fishcatch/ios")
+ '(jde-compile-option-source
+  '(
+   "default"))
+ '(jde-compile-option-target
+  '(
+   "default"))
+ '(jde-compile-option-command-line-args
+  '(
+   "-1.7"))
+ '(jde-sourcepath
+  '(
+   "/home/mikio/dev/fishcatch/ios/src/main/resources"
+   "/home/mikio/dev/fishcatch/ios/src"))
+ '(jde-global-classpath
+  '(
+   "/home/mikio/dev/fishcatch/ios/build/classes/main"
+   "/home/mikio/dev/fishcatch/ios/src/main/resources"
+   "/home/mikio/dev/fishcatch/ios/src"
+   "/home/mikio/.gradle/caches/modules-2/files-2.1/org.robovm/robovm-rt/0.0.11/4d39072af8f4ab14952595957427cf5e48ca6bf8/robovm-rt-0.0.11.jar"
+   "/home/mikio/.gradle/caches/modules-2/files-2.1/org.robovm/robovm-cocoatouch/0.0.11/1001a6f13cf25bb759a104b2a2297e01a0343c9c/robovm-cocoatouch-0.0.11.jar"
+   "/home/mikio/dev/fishcatch/core/build/libs/core-1.0.jar"
+   "/home/mikio/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-backend-robovm/1.0-SNAPSHOT/c9218bcda8b82d065ed78274629417a341334cc2/gdx-backend-robovm-1.0-SNAPSHOT.jar"
+   "/home/mikio/.gradle/caches/modules-2/files-2.1/org.robovm/robovm-objc/0.0.11/be19c0626c7c01188fc55f4f494471a8f72a9ac4/robovm-objc-0.0.11.jar"
+   "/home/mikio/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx/1.0-SNAPSHOT/e544ea790a29a33485f683895bfa6507d805e91d/gdx-1.0-SNAPSHOT.jar")))
