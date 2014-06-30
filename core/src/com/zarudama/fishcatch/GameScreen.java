@@ -515,6 +515,12 @@ public class GameScreen extends MyScreenAdapter {
     }
 
     @Override
+    public void hide() {
+        Gdx.app.log(LOG_TAG, "hide");
+        dispose();
+    }
+
+    @Override
     public void dispose() {
         Gdx.app.log(LOG_TAG, "GameScreen#dispose()");
         music.dispose();
@@ -526,9 +532,4 @@ public class GameScreen extends MyScreenAdapter {
         bgImg.dispose();
         shapeRenderer.dispose();
     }
-    @Override
-    public void hide() {
-        Gdx.app.log(LOG_TAG, "hide");
-    }
-
 }
