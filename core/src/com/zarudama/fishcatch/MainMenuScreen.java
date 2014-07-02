@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.viewport.FitViewport;
@@ -23,22 +24,26 @@ public class MainMenuScreen extends MyScreenAdapter {
     Sprite start;
     Sprite title;
     float alpha;
-	public MainMenuScreen(Game game) {
+    // 画面フォント用
+    private BitmapFont font;
+
+	public MainMenuScreen(FishcatchGame game) {
         super(game);
         Gdx.app.log(LOG_TAG, "constractor");
         img = new Texture(Gdx.files.internal("neko.png"));
         start = new Sprite(img, 0, 16*4, 16*5, 16);
         title = new Sprite(img, 0, 16*13, 16*14, 16*2);
 		uiCamera = new OrthographicCamera();
-		uiCamera.setToOrtho(false, LibGdxSample.LOGICAL_WIDTH, LibGdxSample.LOGICAL_HEIGHT);
-        viewport = new FitViewport(LibGdxSample.LOGICAL_WIDTH, LibGdxSample.LOGICAL_HEIGHT, uiCamera);
+		uiCamera.setToOrtho(false, FishcatchGame.LOGICAL_WIDTH, FishcatchGame.LOGICAL_HEIGHT);
+        viewport = new FitViewport(FishcatchGame.LOGICAL_WIDTH, FishcatchGame.LOGICAL_HEIGHT, uiCamera);
 		batch = new SpriteBatch();
 		touchPoint = new Vector3();
 
-        title.setPosition((LibGdxSample.LOGICAL_WIDTH - 16*14)/2,
-                          LibGdxSample.LOGICAL_HEIGHT/2);
+        font = new BitmapFont();
+        title.setPosition((FishcatchGame.LOGICAL_WIDTH - 16*14)/2,
+                          FishcatchGame.LOGICAL_HEIGHT/2);
 
-        start.setPosition((LibGdxSample.LOGICAL_WIDTH - 16*4)/2,
+        start.setPosition((FishcatchGame.LOGICAL_WIDTH - 16*4)/2,
                           16*3);
         alpha = 0;
         Gdx.app.log(LOG_TAG, "constractor exit");
@@ -65,6 +70,7 @@ public class MainMenuScreen extends MyScreenAdapter {
 		batch.begin();
         title.draw(batch);
         start.draw(batch);
+        font.draw(batch, "HiScore:" + game.hiScore, 10,10);
 		batch.end();
 	}
 
@@ -90,6 +96,7 @@ public class MainMenuScreen extends MyScreenAdapter {
     public void dispose() {
         Gdx.app.log(LOG_TAG, "dispose");
         img.dispose();
+        font.dispose();
         batch.dispose();
     }
 }

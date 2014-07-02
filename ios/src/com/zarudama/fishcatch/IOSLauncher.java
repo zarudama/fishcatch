@@ -5,13 +5,13 @@ import org.robovm.apple.uikit.UIApplication;
 
 import com.badlogic.gdx.backends.iosrobovm.IOSApplication;
 import com.badlogic.gdx.backends.iosrobovm.IOSApplicationConfiguration;
-import com.zarudama.fishcatch.LibGdxSample;
+import com.zarudama.fishcatch.FishcatchGame;
 
 public class IOSLauncher extends IOSApplication.Delegate {
     @Override
     protected IOSApplication createApplication() {
         IOSApplicationConfiguration config = new IOSApplicationConfiguration();
-        return new IOSApplication(new LibGdxSample(), config);
+        return new IOSApplication(new FishcatchGame(), config);
     }
 
     public static void main(String[] argv) {

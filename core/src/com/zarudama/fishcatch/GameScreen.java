@@ -130,7 +130,7 @@ public class GameScreen extends MyScreenAdapter {
     private Sprite gameover;
     private Sprite pause;
 
-    public GameScreen(Game game) {
+    public GameScreen(FishcatchGame game) {
         super(game);
         touchPoint = new Vector3();
         batch = new SpriteBatch();
@@ -334,6 +334,9 @@ public class GameScreen extends MyScreenAdapter {
            seMiss.play();
            if (missCount <= 0) {
                gameSate = GameState.GAMEOVER;
+               if (score > game.hiScore) {
+                   game.hiScore = score;
+               }
            }
         }
         fishpos.y -= MOVE_SPEED;

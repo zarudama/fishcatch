@@ -7,16 +7,18 @@ import com.badlogic.gdx.graphics.FPSLogger;
 import java.util.Set;
 import java.util.HashSet;
 
-public class LibGdxSample extends Game {
-    public static final String LOG_TAG = LibGdxSample.class.getSimpleName();
+public class FishcatchGame extends Game {
+    public static final String LOG_TAG = FishcatchGame.class.getSimpleName();
     // 4:3
     public static int LOGICAL_WIDTH = 256;
     public static int LOGICAL_HEIGHT = 192;
     private Screen nextScreen;
+    public int hiScore;
 
     @Override
     public void create() {
         Gdx.app.log(LOG_TAG, "create");
+        hiScore = 0;
         setScreen(new MainMenuScreen(this));
     }
     @Override

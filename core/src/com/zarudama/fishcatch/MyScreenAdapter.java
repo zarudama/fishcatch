@@ -6,9 +6,9 @@ import com.badlogic.gdx.Screen;
 
 public abstract class MyScreenAdapter implements Screen {
     private static final String LOG_TAG = MyScreenAdapter.class.getSimpleName();
-    Game game;
+    FishcatchGame game;
 
-    public MyScreenAdapter (Game game) {
+    public MyScreenAdapter (FishcatchGame game) {
         this.game = game;
     }
 
