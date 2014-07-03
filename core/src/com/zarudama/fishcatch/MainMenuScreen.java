@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
@@ -22,17 +23,42 @@ public class MainMenuScreen extends MyScreenAdapter {
 	Vector3 touchPoint;
     Texture img;
     Sprite start;
+
+    TextureRegion bgmOn;
+    TextureRegion bgmOff;
+    Rectangle bgmBounds;
+
+    TextureRegion seOn;
+    TextureRegion seOff;
+    Rectangle seBounds;
+
     Sprite title;
     float alpha;
+
     // 画面フォント用
     private BitmapFont font;
 
+    static final int BGM_X = FishcatchGame.LOGICAL_WIDTH - 16*3;
+    static final int BGM_Y = 8;
+    static final int SE_X = FishcatchGame.LOGICAL_WIDTH - 16*2;
+    static final int SE_Y = 8;
+
 	public MainMenuScreen(FishcatchGame game) {
         super(game);
+
         Gdx.app.log(LOG_TAG, "constractor");
         img = new Texture(Gdx.files.internal("neko.png"));
         start = new Sprite(img, 0, 16*4, 16*5, 16);
         title = new Sprite(img, 0, 16*13, 16*14, 16*2);
+
+		bgmOn = new TextureRegion(img, 16*5, 16*4, 16, 16);
+		bgmOff = new TextureRegion(img, 16*6, 16*4, 16, 16);
+        bgmBounds = new Rectangle(BGM_X, BGM_Y, 16, 16);
+
+		seOn = new TextureRegion(img, 16*7, 16*4, 16, 16);
+		seOff = new TextureRegion(img, 16*8, 16*4, 16, 16);
+        seBounds = new Rectangle(SE_X, SE_Y, 16, 16);
+
 		uiCamera = new OrthographicCamera();
 		uiCamera.setToOrtho(false, FishcatchGame.LOGICAL_WIDTH, FishcatchGame.LOGICAL_HEIGHT);
         viewport = new FitViewport(FishcatchGame.LOGICAL_WIDTH, FishcatchGame.LOGICAL_HEIGHT, uiCamera);
@@ -59,6 +85,12 @@ public class MainMenuScreen extends MyScreenAdapter {
                 Gdx.app.log(LOG_TAG, "game start!");
 			 	return;
 			}
+			if (bgmBounds.contains(touchPoint.x, touchPoint.y)) {
+                game.bgmOn = !game.bgmOn;
+			}
+			if (seBounds.contains(touchPoint.x, touchPoint.y)) {
+                game.seOn = !game.seOn;
+			}
 		}
 	}
 	public void draw () {
@@ -70,7 +102,11 @@ public class MainMenuScreen extends MyScreenAdapter {
 		batch.begin();
         title.draw(batch);
         start.draw(batch);
-        font.draw(batch, "HiScore:" + game.hiScore, 10,10);
+        TextureRegion bgmBtm = game.bgmOn? bgmOn: bgmOff;
+		batch.draw(bgmBtm, BGM_X, BGM_Y, 16, 16);
+        TextureRegion seBtm = game.seOn? seOn: seOff;
+		batch.draw(seBtm, SE_X, SE_Y, 16, 16);
+        font.draw(batch, "HiScore:" + game.hiScore, 10,16);
 		batch.end();
 	}
 

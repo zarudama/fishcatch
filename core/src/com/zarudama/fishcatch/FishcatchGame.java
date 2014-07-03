@@ -9,16 +9,23 @@ import java.util.HashSet;
 
 public class FishcatchGame extends Game {
     public static final String LOG_TAG = FishcatchGame.class.getSimpleName();
-    // 4:3
+    // 16:9
     public static int LOGICAL_WIDTH = 256;
-    public static int LOGICAL_HEIGHT = 192;
+    public static int LOGICAL_HEIGHT = 144;
+    // 4:3
+    // public static int LOGICAL_WIDTH = 256;
+    // public static int LOGICAL_HEIGHT = 192;
     private Screen nextScreen;
     public int hiScore;
+    public boolean bgmOn;
+    public boolean seOn;
 
     @Override
     public void create() {
         Gdx.app.log(LOG_TAG, "create");
         hiScore = 0;
+        bgmOn = true;
+        seOn = true;
         setScreen(new MainMenuScreen(this));
     }
     @Override

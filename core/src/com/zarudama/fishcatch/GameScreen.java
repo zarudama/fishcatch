@@ -141,7 +141,9 @@ public class GameScreen extends MyScreenAdapter {
         music = Gdx.audio.newMusic(Gdx.files.internal("mixdown.mp3"));
         music.setLooping(true);
         music.setVolume(0.3f);
-        music.play();
+        if (game.bgmOn) {
+            music.play();
+        }
 
         seGet = Gdx.audio.newSound(Gdx.files.internal("get.wav"));
         seMiss = Gdx.audio.newSound(Gdx.files.internal("miss.wav"));
@@ -331,7 +333,9 @@ public class GameScreen extends MyScreenAdapter {
         if (fishpos.y < 0) {
            resetFish();
            missCount -= 1;
-           seMiss.play();
+           if (game.seOn) {
+               seMiss.play();
+           }
            if (missCount <= 0) {
                gameSate = GameState.GAMEOVER;
                if (score > game.hiScore) {
@@ -344,7 +348,9 @@ public class GameScreen extends MyScreenAdapter {
 
         if (nekoBounds.overlaps(fishBounds)) {
             resetFish();
-            seGet.play();
+            if (game.seOn) {
+                seGet.play();
+            }
             score += 1;
         }
 
