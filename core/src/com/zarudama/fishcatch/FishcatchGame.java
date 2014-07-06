@@ -16,7 +16,7 @@ public class FishcatchGame extends Game {
     // public static int LOGICAL_WIDTH = 256;
     // public static int LOGICAL_HEIGHT = 192;
     private Screen nextScreen;
-    public Settings settings;
+    private Settings settings;
 
     public boolean seOn() {
         return settings.seOn();
