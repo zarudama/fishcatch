@@ -16,18 +16,39 @@ public class FishcatchGame extends Game {
     // public static int LOGICAL_WIDTH = 256;
     // public static int LOGICAL_HEIGHT = 192;
     private Screen nextScreen;
-    public int hiScore;
-    public boolean bgmOn;
-    public boolean seOn;
+    public Settings settings;
+
+    public boolean seOn() {
+        return settings.seOn();
+    }
+
+    public boolean bgmOn() {
+        return settings.bgmOn();
+    }
+
+    public int hiscore() {
+        return settings.hiscore();
+    }
+
+    public void toggleSeOn() {
+        settings.toggleSeOn();
+    }
+
+    public void toggleBgmOn() {
+        settings.toggleBgmOn();
+    }
+
+    public void hiscore(int score) {
+        settings.hiscore(score);
+    }
 
     @Override
     public void create() {
         Gdx.app.log(LOG_TAG, "create");
-        hiScore = 0;
-        bgmOn = true;
-        seOn = true;
+        settings = new Settings();
         setScreen(new MainMenuScreen(this));
     }
+
     @Override
     public void render() {
         super.render();

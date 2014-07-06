@@ -141,10 +141,9 @@ public class GameScreen extends MyScreenAdapter {
         music = Gdx.audio.newMusic(Gdx.files.internal("mixdown.mp3"));
         music.setLooping(true);
         music.setVolume(0.3f);
-        if (game.bgmOn) {
+        if (game.bgmOn()) {
             music.play();
         }
-
         seGet = Gdx.audio.newSound(Gdx.files.internal("get.wav"));
         seMiss = Gdx.audio.newSound(Gdx.files.internal("miss.wav"));
 
@@ -174,7 +173,7 @@ public class GameScreen extends MyScreenAdapter {
         uiCamera.setToOrtho(false, LOGICAL_WIDTH, LOGICAL_HEIGHT);
         uiViewport = new FitViewport(LOGICAL_WIDTH, LOGICAL_HEIGHT, uiCamera);
 
-        shapeRenderer = new ShapeRenderer();
+        //shapeRenderer = new ShapeRenderer();
 
         // アニメーション情報構築
         TextureRegion[] split = new TextureRegion(img).split(16, 16)[0];
@@ -333,13 +332,13 @@ public class GameScreen extends MyScreenAdapter {
         if (fishpos.y < 0) {
            resetFish();
            missCount -= 1;
-           if (game.seOn) {
+           if (game.seOn()) {
                seMiss.play();
            }
            if (missCount <= 0) {
                gameSate = GameState.GAMEOVER;
-               if (score > game.hiScore) {
-                   game.hiScore = score;
+               if (score > game.hiscore()) {
+                   game.hiscore(score);
                }
            }
         }
@@ -348,7 +347,7 @@ public class GameScreen extends MyScreenAdapter {
 
         if (nekoBounds.overlaps(fishBounds)) {
             resetFish();
-            if (game.seOn) {
+            if (game.seOn()) {
                 seGet.play();
             }
             score += 1;
@@ -479,13 +478,13 @@ public class GameScreen extends MyScreenAdapter {
 
         // ワールド座標軸を描画する。
         if (isDebug) {
-            shapeRenderer.setProjectionMatrix(camera.combined);
-            shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
-            shapeRenderer.setColor(1, 0, 0, 1);
-            shapeRenderer.line(-1024, 0, 1024, 0);
-            shapeRenderer.setColor(0, 1, 0, 1);
-            shapeRenderer.line(0, -1024, 0, 1024);
-            shapeRenderer.end();
+            // shapeRenderer.setProjectionMatrix(camera.combined);
+            // shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
+            // shapeRenderer.setColor(1, 0, 0, 1);
+            // shapeRenderer.line(-1024, 0, 1024, 0);
+            // shapeRenderer.setColor(0, 1, 0, 1);
+            // shapeRenderer.line(0, -1024, 0, 1024);
+            // shapeRenderer.end();
         }
 
         // UIカメラセットアップ
@@ -539,6 +538,6 @@ public class GameScreen extends MyScreenAdapter {
         font.dispose();
         img.dispose();
         bgImg.dispose();
-        shapeRenderer.dispose();
+        //        shapeRenderer.dispose();
     }
 }

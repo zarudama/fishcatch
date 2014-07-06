@@ -9,7 +9,6 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.viewport.FitViewport;
@@ -23,6 +22,7 @@ public class MainMenuScreen extends MyScreenAdapter {
 	Vector3 touchPoint;
     Texture img;
     Sprite start;
+    Sprite hiscore;
 
     TextureRegion bgmOn;
     TextureRegion bgmOff;
@@ -34,9 +34,6 @@ public class MainMenuScreen extends MyScreenAdapter {
 
     Sprite title;
     float alpha;
-
-    // 画面フォント用
-    private BitmapFont font;
 
     static final int BGM_X = FishcatchGame.LOGICAL_WIDTH - 16*3;
     static final int BGM_Y = 8;
@@ -59,13 +56,15 @@ public class MainMenuScreen extends MyScreenAdapter {
 		seOff = new TextureRegion(img, 16*8, 16*4, 16, 16);
         seBounds = new Rectangle(SE_X, SE_Y, 16, 16);
 
+        hiscore = new Sprite(img, 16*5, 16*12, 16*4, 8);
+        hiscore.setPosition(8, 8);
+
 		uiCamera = new OrthographicCamera();
 		uiCamera.setToOrtho(false, FishcatchGame.LOGICAL_WIDTH, FishcatchGame.LOGICAL_HEIGHT);
         viewport = new FitViewport(FishcatchGame.LOGICAL_WIDTH, FishcatchGame.LOGICAL_HEIGHT, uiCamera);
 		batch = new SpriteBatch();
 		touchPoint = new Vector3();
 
-        font = new BitmapFont();
         title.setPosition((FishcatchGame.LOGICAL_WIDTH - 16*14)/2,
                           FishcatchGame.LOGICAL_HEIGHT/2);
 
@@ -74,6 +73,7 @@ public class MainMenuScreen extends MyScreenAdapter {
         alpha = 0;
         Gdx.app.log(LOG_TAG, "constractor exit");
 	}
+
 	public void update(float delta) {
         alpha += 0.05f;
         start.setAlpha(0.5f - 0.3f * (float) Math.sin(alpha));
@@ -86,27 +86,51 @@ public class MainMenuScreen extends MyScreenAdapter {
 			 	return;
 			}
 			if (bgmBounds.contains(touchPoint.x, touchPoint.y)) {
-                game.bgmOn = !game.bgmOn;
+                Gdx.app.log(LOG_TAG, "bgmButton");
+                game.toggleBgmOn();
 			}
 			if (seBounds.contains(touchPoint.x, touchPoint.y)) {
-                game.seOn = !game.seOn;
+                Gdx.app.log(LOG_TAG, "seButton");
+                game.toggleSeOn();
 			}
 		}
 	}
+
+    private void drawScore(
+        final float x,
+        final float y,
+        final int aScore
+    ) {
+        String sScore = String.valueOf(aScore);
+        char[] chars = sScore.toCharArray();
+        int bx = 16*5;
+        int by = 16*12+8;
+        float xx = x;
+        for (int i = 0 ; i < chars.length; i++) {
+            int num = chars[i] - 48;
+            batch.draw(img,
+                xx, y,
+                bx + num * 8, by,
+                8, 8);
+            xx += 8;
+        }
+    }
+
 	public void draw () {
 		GL20 gl = Gdx.gl;
-		gl.glClearColor(0, 0, 0, 1);
+		gl.glClearColor(0, 0, 1, 1);
 		gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		uiCamera.update();
 		batch.setProjectionMatrix(uiCamera.combined);
 		batch.begin();
         title.draw(batch);
         start.draw(batch);
-        TextureRegion bgmBtm = game.bgmOn? bgmOn: bgmOff;
+        TextureRegion bgmBtm = game.bgmOn()? bgmOn: bgmOff;
 		batch.draw(bgmBtm, BGM_X, BGM_Y, 16, 16);
-        TextureRegion seBtm = game.seOn? seOn: seOff;
+        TextureRegion seBtm = game.seOn()? seOn: seOff;
 		batch.draw(seBtm, SE_X, SE_Y, 16, 16);
-        font.draw(batch, "HiScore:" + game.hiScore, 10,16);
+        hiscore.draw(batch);
+        drawScore(16*4+8, 8, game.hiscore());
 		batch.end();
 	}
 
@@ -132,7 +156,6 @@ public class MainMenuScreen extends MyScreenAdapter {
     public void dispose() {
         Gdx.app.log(LOG_TAG, "dispose");
         img.dispose();
-        font.dispose();
         batch.dispose();
     }
 }
